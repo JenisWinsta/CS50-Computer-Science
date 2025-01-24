@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <style>
+            /* the classes gets added to the buttons once the answer gets checked */
+            button.correct{
+                background-color: lightgreen;
+            }
+            button.wrong{
+                background-color:red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>Which planet has the most gravity?</h3>
+                <button type="button" onclick="check_ans(this, false);"> Earth </button>
+                <button type="button" onclick="check_ans(this, false);"> Mars </button>
+                <button type="button" onclick="check_ans(this, false);"> Venus </button>
+                <button type="button" onclick="check_ans(this, true);"> Jupiter </button>
+                <div id="answer-space"></div>
+            </div>
+
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>Which is the oldest language in the world?</h3>
+                <input type="text" id="ans" name="ans">
+                <button type="button" onclick="check_txt();">Check Answer</button>
+                <div id="ans_status"></div>
+            </div>
+        </div>
+
+        <script>
+            // Function to check the multiple-choice answer
+            function check_ans(button, isCorrect) {
+                if (isCorrect) {
+                    button.classList.add("correct");
+                    document.getElementById("answer-space").innerText = "Correct Answer!";
+                } else {
+                    button.classList.add("wrong");
+                    document.getElementById("answer-space").innerText = "Wrong Answer! Try Again.";
+                }
+
+                // Disable all buttons after answering
+                const buttons = document.querySelectorAll("button");
+                buttons.forEach((btn) => (btn.disabled = true));
+            }
+
+            // Function to check the free response answer
+            function check_txt() {
+                const userAnswer = document.getElementById("ans").value.trim().toLowerCase();
+                const correctAnswer = "tamil"; // Example correct answer
+
+                if (userAnswer === correctAnswer) {
+                    document.getElementById("ans_status").innerText = "Correct Answer!";
+                    document.getElementById("ans_status").style.color = "green";
+                } else {
+                    document.getElementById("ans_status").innerText = "Wrong Answer!";
+                    document.getElementById("ans_status").style.color = "red";
+                }
+            }
+
+        </script>
+    </body>
+</html>

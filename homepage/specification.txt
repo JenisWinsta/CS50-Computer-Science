@@ -1,0 +1,7 @@
+10 html tags used:
+div, img, button, p, h5, main, section, nav, main, footer, header
+
+5 css properties:
+font-weight, color, margin, padding, text-decoration, background-color
+
+Js is used to display message through alert in the courses page. Bootstrap is used in organization of content in the main tag of courses.html page.
